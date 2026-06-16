@@ -16,6 +16,7 @@ public:
 
     std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) override {
         return std::make_shared<PrintOperatorUnit>(text);
+
     }
 };
 #endif // CPPFACTORY_H
