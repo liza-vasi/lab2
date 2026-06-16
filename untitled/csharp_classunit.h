@@ -8,18 +8,17 @@
 class csharp_classunit : public Unit
 {
 public:
-    // ✅ ВСЕ 7 модификаторов доступа C#
+
     enum AccessModifier {
         PUBLIC,
         PROTECTED,
         PRIVATE,
         INTERNAL,
-        PROTECTED_INTERNAL,   // доступно в сборке ИЛИ наследникам
-        PRIVATE_PROTECTED,    // доступно в классе И наследникам в сборке
-        FILE                  // доступно только в текущем файле (C# 11)
+        PROTECTED_INTERNAL,
+        PRIVATE_PROTECTED,
+        FILE
     };
 
-    // ✅ Модификаторы класса (C# специфичные)
     enum ClassModifier {
         NONE = 0,
         PUBLIC_CLASS = 1 << 0,
@@ -30,7 +29,7 @@ public:
         PARTIAL_CLASS = 1 << 5,
     };
 
-    explicit CSharpClassUnit(const std::string& name);
+    explicit csharp_classunit(const std::string& name);
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
@@ -39,7 +38,6 @@ public:
     void setModifier(const std::string& modifier);
     void addInterface(const std::string& interfaceName);
 
-    // ✅ Методы для C# модификаторов класса
     void setClassModifier(ClassModifier modifier);
     void addClassModifier(ClassModifier modifier);
 
