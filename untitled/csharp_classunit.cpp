@@ -21,7 +21,7 @@ const std::vector<std::string> csharp_classunit::CLASS_MODIFIER_STRINGS = {
 };
 
 csharp_classunit::csharp_classunit(const std::string& name)
-    : m_name(name)
+    : ClassUnit(name)
 {
     m_fields.resize(7);
 }

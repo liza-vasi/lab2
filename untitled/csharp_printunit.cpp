@@ -1,6 +1,6 @@
 #include "csharp_printunit.h"
 
-csharp_printunit::csharp_printunit(const std::string& text): m_text(text)
+csharp_printunit::csharp_printunit(const std::string& text): PrintOperatorUnit(text)
 {
 }
 

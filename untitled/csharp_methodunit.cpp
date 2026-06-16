@@ -1,7 +1,7 @@
 #include "csharp_methodunit.h"
 
 csharp_methodunit::csharp_methodunit(const std::string& name, const std::string& returnType, Unit::Flags flags)
-    : m_name(name), m_returnType(returnType), m_flags(flags)
+    : MethodUnit(name,returnType,flags)
 {
 }
 

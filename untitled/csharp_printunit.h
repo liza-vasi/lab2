@@ -1,10 +1,10 @@
 #ifndef CSHARP_PRINTUNIT_H
 #define CSHARP_PRINTUNIT_H
 
-#include "unit.h"
+#include "printoperatorunit.h"
 #include <string>
 
-class csharp_printunit : public Unit
+class csharp_printunit : public  PrintOperatorUnit
 {
 public:
     explicit csharp_printunit(const std::string& text);

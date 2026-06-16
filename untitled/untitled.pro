@@ -8,6 +8,10 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         classunit.cpp \
+        csharp_classunit.cpp \
+        csharp_factory.cpp \
+        csharp_methodunit.cpp \
+        csharp_printunit.cpp \
         main.cpp \
         methodunit.cpp \
         printoperatorunit.cpp \
@@ -22,6 +26,10 @@ HEADERS += \
     abstractfactory.h \
     classunit.h \
     cppfactory.h \
+    csharp_classunit.h \
+    csharp_factory.h \
+    csharp_methodunit.h \
+    csharp_printunit.h \
     methodunit.h \
     printoperatorunit.h \
     unit.h

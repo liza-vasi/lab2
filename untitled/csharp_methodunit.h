@@ -1,13 +1,13 @@
 #ifndef CSHARP_METHODUNIT_H
 #define CSHARP_METHODUNIT_H
 
-#include "unit.h"
+#include "methodunit.h"
 #include <vector>
 #include <string>
 
 // Класс для генерации C# метода
 
-class csharp_methodunit : public Unit
+class csharp_methodunit : public MethodUnit
 {
 public:
     // Модификаторы метода C#

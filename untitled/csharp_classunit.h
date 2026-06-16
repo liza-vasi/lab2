@@ -1,11 +1,11 @@
 #ifndef CSHARP_CLASSUNIT_H
 #define CSHARP_CLASSUNIT_H
 
-#include "unit.h"
+#include "classunit.h"
 #include <vector>
 #include <string>
 
-class csharp_classunit : public Unit
+class csharp_classunit : public ClassUnit
 {
 public:
 
