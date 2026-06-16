@@ -17,6 +17,13 @@ public:
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
+    // C# специфичные методы
+    void setModifier(const std::string& modifier) {
+        m_classModifier = modifier;
+    }
+    void addInterface(const std::string& interfaceName) {
+        m_interfaces.push_back(interfaceName);
+    }
 
 private:
     std::string m_name;
