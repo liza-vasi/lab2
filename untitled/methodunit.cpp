@@ -1,11 +1,11 @@
 #include "methodunit.h"
 
 MethodUnit::MethodUnit(const std::string& name, const std::string& returnType, Flags flags)
-    : m_name(name), m_returnType(returnType), m_flags(flags)
+    : AbstractMethodUnit(name, returnType, flags)
 {
 }
 
-void MethodUnit::add(const std::shared_ptr<Unit>& unit, Flags)
+void MethodUnit::add(const std::shared_ptr<AbstractUnit>& unit, Flags)
 {
     m_body.push_back(unit);
 }

@@ -2,7 +2,7 @@
 
 
 PrintOperatorUnit::PrintOperatorUnit(const std::string& text)
-    : m_text(text)
+    : AbstractPrintUnit(text)
 {
 }
 

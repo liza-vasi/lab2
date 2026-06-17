@@ -3,12 +3,12 @@
 const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS = {"public:", "protected:", "private:"};
 
 ClassUnit::ClassUnit(const std::string& name)
-    : m_name(name)
+    :AbstractClassUnit(name)
 {
     m_fields.resize(3);
 }
 
-void ClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags)
+void ClassUnit::add(const std::shared_ptr<AbstractUnit>& unit, Flags flags)
 {
     int accessModifier = PRIVATE;
     if (flags < 3) {
