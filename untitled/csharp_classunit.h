@@ -18,12 +18,10 @@ public:
         FILE
     };
 
-
     explicit CSharpClassUnit(const std::string& name);
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
-
     void setClassModifier(const std::string& modifier);
 
 private:

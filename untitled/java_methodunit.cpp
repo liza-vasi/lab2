@@ -14,12 +14,10 @@ std::string JavaMethodUnit::compile(unsigned int level) const
 {
     std::string result = generateShift(level);
 
-    // Модификаторы доступа
     if (m_flags & PUBLIC) result += "public ";
     if (m_flags & PRIVATE) result += "private ";
     if (m_flags & PROTECTED) result += "protected ";
 
-    // Модификаторы поведения
     if (m_flags & STATIC) result += "static ";
     if (m_flags & FINAL) result += "final ";
     if (m_flags & ABSTRACT) result += "abstract ";

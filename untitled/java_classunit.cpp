@@ -4,7 +4,7 @@ const std::vector<std::string> JavaClassUnit::ACCESS_MODIFIERS = {
     "public",
     "protected",
     "private",
-    ""  // package-private — пустая строка
+    ""
 };
 
 JavaClassUnit::JavaClassUnit(const std::string& name)
@@ -13,13 +13,11 @@ JavaClassUnit::JavaClassUnit(const std::string& name)
     m_fields.resize(4);
 }
 
-void JavaClassUnit::setClassModifier(const std::string& modifier)
-{
+void JavaClassUnit::setClassModifier(const std::string& modifier) {
     m_classModifier = modifier;
 }
 
-void JavaClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags)
-{
+void JavaClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags) {
     int accessModifier = PRIVATE;
     if (flags < 4) {
         accessModifier = static_cast<int>(flags);
@@ -27,11 +25,8 @@ void JavaClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags)
     m_fields[accessModifier].push_back(unit);
 }
 
-std::string JavaClassUnit::compile(unsigned int level) const
-{
-    std::string result;
-
-    result += generateShift(level);
+std::string JavaClassUnit::compile(unsigned int level) const {
+    std::string result = generateShift(level);
 
     if (!m_classModifier.empty()) {
         result += m_classModifier + " ";
@@ -43,11 +38,10 @@ std::string JavaClassUnit::compile(unsigned int level) const
     for (size_t i = 0; i < 4; ++i) {
         if (m_fields[i].empty()) continue;
 
-        // Для package-private не добавляем модификатор
         if (!ACCESS_MODIFIERS[i].empty()) {
             result += generateShift(level + 1) + ACCESS_MODIFIERS[i] + " ";
         } else {
-            result += generateShift(level + 1);  // просто отступ
+            result += generateShift(level + 1);
         }
 
         for (const auto& f : m_fields[i]) {

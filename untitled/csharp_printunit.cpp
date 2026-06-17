@@ -1,7 +1,7 @@
 #include "csharp_printunit.h"
 
 CSharpPrintUnit::CSharpPrintUnit(const std::string& text)
-    : PrintOperatorUnit(text)
+    : m_text(text)
 {
 }
 

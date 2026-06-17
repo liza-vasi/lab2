@@ -12,14 +12,13 @@ public:
         PUBLIC,
         PROTECTED,
         PRIVATE,
-        PACKAGE_PRIVATE  // default (без модификатора)
+        PACKAGE_PRIVATE
     };
 
     explicit JavaClassUnit(const std::string& name);
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
-
     void setClassModifier(const std::string& modifier);
 
 private:
