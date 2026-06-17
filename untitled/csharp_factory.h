@@ -4,31 +4,24 @@
 #include "abstractfactory.h"
 #include "csharp_classunit.h"
 #include "csharp_methodunit.h"
-#include "csharp_printunit.h"
-#include <memory>
-#include <string>
+#include "csharp_printunit.h"   // ← ЭТОТ ФАЙЛ ДОЛЖЕН БЫТЬ ПОДКЛЮЧЁН!
 
-class csarp_factory : public AbstractFactory
+class CSharpFactory : public AbstractFactory
 {
 public:
-    csarp_factory() = default;
-    ~csarp_factory() override = default;
-
-    std::shared_ptr<ClassUnit> createClassUnit(const std::string& name) override {
-        return std::make_shared<csharp_classunit>(name);
+    std::shared_ptr<Unit> createClassUnit(const std::string& name) override {
+        auto unit = std::make_shared<CSharpClassUnit>(name);
+        unit->setClassModifier("public");
+        return unit;
     }
 
-    std::shared_ptr<MethodUnit> createMethodUnit(
-        const std::string& returnType,
-        const std::string& name,
-        Unit::Flags flags
-        ) override {
-        return std::make_shared<csharp_methodunit>(name, returnType, flags);
+    std::shared_ptr<Unit> createMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags) override {
+        return std::make_shared<CSharpMethodUnit>(name, returnType, flags);
     }
 
-    std::shared_ptr<PrintOperatorUnit> createPrintOperatorUnit(const std::string& text) override {
-        return std::make_shared<csharp_printunit>(text);
+    std::shared_ptr<Unit> createPrintUnit(const std::string& text) override {
+        return std::make_shared<CSharpPrintUnit>(text);   // ← теперь должно работать!
     }
 };
 
-#endif // CSHARP_FACTORY_H
+#endif

@@ -9,7 +9,6 @@ CONFIG += c++17 cmdline
 SOURCES += \
         classunit.cpp \
         csharp_classunit.cpp \
-        csharp_factory.cpp \
         csharp_methodunit.cpp \
         csharp_printunit.cpp \
         main.cpp \
