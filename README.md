@@ -40,9 +40,151 @@
 |C++	|ClassUnit	|MethodUnit	|PrintOperatorUnit	|CppFactory|
 |C#	|CSharpClassUnit	|CSharpMethodUnit	|CSharpPrintUnit	|CSharpFactory|
 |Java	|JavaClassUnit	|JavaMethodUnit	|JavaPrintUnit	|JavaFactory|
+
 Все языковые классы наследуются напрямую от Unit, что обеспечивает независимость реализаций и отсутствие конфликтов.
 
 
 UML: https://drive.google.com/file/d/1KcCk1fe5QfR2mv8qyn6sTRrBSvv_6-Fn/view?usp=sharing
 
-## Инструкция 
+## Тестирование
+
+- Генерация для C++
+```cpp
+#include "abstractfactory.h"
+#include "cppfactory.h"
+
+int main() {
+    CppFactory factory;
+
+    // Создаём класс с именем MyClass
+    auto myClass = factory.createClassUnit("MyClass");
+
+    // Создаём методы с разными модификаторами
+    auto method1 = factory.createMethodUnit("test1", "void", 0);
+    auto method2 = factory.createMethodUnit("test2", "void", MethodUnit::STATIC);
+
+    // Создаём метод с оператором печати
+    auto methodPrint = factory.createMethodUnit("testPrint", "void", 0);
+    auto print = factory.createPrintUnit("Hello, World!");
+    methodPrint->add(print, 0);
+
+    // Добавляем методы в класс с разными модификаторами доступа
+    myClass->add(method1, ClassUnit::PUBLIC);
+    myClass->add(method2, ClassUnit::PRIVATE);
+    myClass->add(method3, ClassUnit::PUBLIC);
+    myClass->add(methodPrint, ClassUnit::PROTECTED);
+
+    // Генерируем и выводим код
+    std::cout << myClass->compile();
+
+    return 0;
+}
+```
+**Результат выполнения:**
+
+```cpp
+class MyClass {
+public:
+    void test1() {
+    }
+void test3() const {
+    }
+protected:
+    void testPrint() {
+        printf("Hello, World!");
+    }
+private:
+    static void test2() {
+    }
+};
+```
+- Генерация для C#
+```cpp
+#include <iostream>
+#include <memory>
+#include "abstractfactory.h"
+#include "csharp_factory.h"
+
+int main() {
+    auto factory = std::make_shared<CSharpFactory>();
+
+    auto myClass = factory->createClassUnit("MyClass");
+
+    auto method1 = factory->createMethodUnit("test1", "void", 0);
+    auto method2 = factory->createMethodUnit("test2", "void", CSharpMethodUnit::STATIC);
+    auto method3 = factory->createMethodUnit("test3", "void", CSharpMethodUnit::VIRTUAL);
+
+    auto methodPrint = factory->createMethodUnit("testPrint", "void", 0);
+    auto print = factory->createPrintUnit("Hello, World!");
+    methodPrint->add(print, 0);
+
+    myClass->add(method1, CSharpClassUnit::PUBLIC);
+    myClass->add(method2, CSharpClassUnit::PRIVATE);
+    myClass->add(method3, CSharpClassUnit::PUBLIC);
+    myClass->add(methodPrint, CSharpClassUnit::PROTECTED);
+
+    std::cout << myClass->compile();
+
+    return 0;
+}
+```
+**Результат выполнения:**
+```cpp
+using System;
+
+public class MyClass {
+    public void test1() {
+    }
+    public virtual void test3() {
+    }
+    protected void testPrint() {
+        Console.WriteLine("Hello, World!");
+    }
+    private static void test2() {
+    }
+}
+```
+- Генерация для Java
+```cpp
+#include <iostream>
+#include <memory>
+#include "abstractfactory.h"
+#include "java_factory.h"
+
+int main() {
+    auto factory = std::make_shared<JavaFactory>();
+
+    auto myClass = factory->createClassUnit("MyClass");
+
+    auto method1 = factory->createMethodUnit("test1", "void", 0);
+    auto method2 = factory->createMethodUnit("test2", "void", JavaMethodUnit::STATIC);
+    auto method3 = factory->createMethodUnit("test3", "void", JavaMethodUnit::FINAL);
+
+    auto methodPrint = factory->createMethodUnit("testPrint", "void", 0);
+    auto print = factory->createPrintUnit("Hello, World!");
+    methodPrint->add(print, 0);
+
+    myClass->add(method1, JavaClassUnit::PUBLIC);
+    myClass->add(method2, JavaClassUnit::PRIVATE);
+    myClass->add(method3, JavaClassUnit::PUBLIC);
+    myClass->add(methodPrint, JavaClassUnit::PROTECTED);
+
+    std::cout << myClass->compile();
+
+    return 0;
+}
+```
+**Результат выполнения:**
+```cpp
+public class MyClass {
+    public void test1() {
+    }
+    public final void test3() {
+    }
+    protected void testPrint() {
+        System.out.println("Hello, World!");
+    }
+    private static void test2() {
+    }
+}
+```
