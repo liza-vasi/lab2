@@ -18,11 +18,16 @@ std::string CSharpMethodUnit::compile(unsigned int level) const
     if (m_flags & PRIVATE) result += "private ";
     if (m_flags & PROTECTED) result += "protected ";
     if (m_flags & INTERNAL) result += "internal ";
+    if (m_flags & PROTECTED_INTERNAL) result += "protected internal ";
+    if (m_flags & PRIVATE_PROTECTED) result += "private protected ";
+
+
     if (m_flags & STATIC) result += "static ";
     if (m_flags & VIRTUAL) result += "virtual ";
     if (m_flags & ABSTRACT) result += "abstract ";
     if (m_flags & OVERRIDE) result += "override ";
-
+    if (m_flags & SEALED) result += "sealed ";
+    if (m_flags & NEW) result += "new ";
     result += m_returnType + " " + m_name + "()";
 
     if (m_flags & ABSTRACT) {

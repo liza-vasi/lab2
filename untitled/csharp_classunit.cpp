@@ -4,13 +4,16 @@ const std::vector<std::string> CSharpClassUnit::ACCESS_MODIFIERS = {
     "public",
     "protected",
     "private",
-    "internal"
+    "internal",
+    "protected internal",
+    "private protected",
+    "file"
 };
 
 CSharpClassUnit::CSharpClassUnit(const std::string& name)
     : m_name(name)
 {
-    m_fields.resize(4);
+    m_fields.resize(7);
 }
 
 void CSharpClassUnit::setClassModifier(const std::string& modifier)
@@ -21,7 +24,7 @@ void CSharpClassUnit::setClassModifier(const std::string& modifier)
 void CSharpClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags)
 {
     int accessModifier = PRIVATE;
-    if (flags < 4) {
+    if (flags < 7) {
         accessModifier = static_cast<int>(flags);
     }
     m_fields[accessModifier].push_back(unit);
@@ -43,7 +46,7 @@ std::string CSharpClassUnit::compile(unsigned int level) const
 
     result += "\n" + generateShift(level) + "{\n";
 
-    for (size_t i = 0; i < 4; ++i) {
+    for (size_t i = 0; i < 7; ++i) {
         if (m_fields[i].empty()) continue;
 
         result += generateShift(level + 1) + ACCESS_MODIFIERS[i];

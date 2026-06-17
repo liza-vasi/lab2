@@ -10,16 +10,10 @@
  */
 class AbstractPrintUnit : public AbstractUnit {
 public:
-    explicit AbstractPrintUnit(const std::string& text) : m_text(text) {}
-
-    virtual ~AbstractPrintUnit() = default;
-
-    //Генерирует код оператора печати.
-
-    virtual std::string compile(unsigned int level = 0) const override = 0;
-
+    explicit AbstractPrintUnit(const std::string& text);
+    virtual std::string compile(unsigned int level = 0) const = 0;
 protected:
-    std::string m_text;  // текст для вывода
+    std::string m_text;
 };
 
 #endif

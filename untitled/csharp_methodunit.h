@@ -13,10 +13,15 @@ public:
         PRIVATE = 1 << 1,
         PROTECTED = 1 << 2,
         INTERNAL = 1 << 3,
-        STATIC = 1 << 4,
-        VIRTUAL = 1 << 5,
-        ABSTRACT = 1 << 6,
-        OVERRIDE = 1 << 7
+        PROTECTED_INTERNAL = 1 << 4,
+        PRIVATE_PROTECTED = 1 << 5,
+
+        STATIC = 1 << 6,
+        VIRTUAL = 1 << 7,
+        ABSTRACT = 1 << 8,
+        OVERRIDE = 1 << 9,
+        SEALED = 1 << 10,
+        NEW = 1 << 11
     };
 
     CSharpMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags);

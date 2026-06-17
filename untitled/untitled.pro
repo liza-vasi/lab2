@@ -25,6 +25,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    abstract_class_unit.h \
+    abstract_method_unit.h \
+    abstract_print_unit.h \
     abstractfactory.h \
     classunit.h \
     cppfactory.h \

@@ -22,8 +22,7 @@ public:
 
     virtual std::string compile(unsigned int level = 0) const override = 0;
 
-    /*
-     * Устанавливает модификатор класса (например "public", "abstract").
+    /*Устанавливает модификатор класса (например "public", "abstract").
      * Каждый язык определяет свои допустимые значения.
      */
     virtual void setClassModifier(const std::string& modifier) = 0;

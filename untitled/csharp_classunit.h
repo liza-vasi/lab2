@@ -12,8 +12,12 @@ public:
         PUBLIC,
         PROTECTED,
         PRIVATE,
-        INTERNAL
+        INTERNAL,
+        PROTECTED_INTERNAL,
+        PRIVATE_PROTECTED,
+        FILE
     };
+
 
     explicit CSharpClassUnit(const std::string& name);
 

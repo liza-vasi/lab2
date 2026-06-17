@@ -20,7 +20,6 @@ std::string MethodUnit::compile(unsigned int level) const
         result += "virtual ";
     }
 
-    // ✅ ПРАВИЛЬНЫЙ ПОРЯДОК: ТИП ПОТОМ ИМЯ
     result += m_returnType + " ";
     result += m_name + "()";
 
