@@ -87,6 +87,8 @@ class MyClass {
 public:
     void test1() {
     }
+void test3() const {
+    }
 protected:
     void testPrint() {
         printf("Hello, World!");
