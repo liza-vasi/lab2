@@ -21,7 +21,7 @@ public:
 
     std::string compile(unsigned int level = 0) const override;
 
-protected:  // ← ИЗМЕНИЛИ С private НА protected!
+protected:
     std::string m_name;
     std::string m_returnType;
     Flags m_flags;

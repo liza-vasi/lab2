@@ -1,10 +1,10 @@
 #ifndef CSHARP_PRINTUNIT_H
 #define CSHARP_PRINTUNIT_H
 
-#include "printoperatorunit.h"  // ← изменили!
+#include "printoperatorunit.h"
 #include <string>
 
-class CSharpPrintUnit : public PrintOperatorUnit  // ← наследуемся от PrintOperatorUnit!
+class CSharpPrintUnit : public PrintOperatorUnit
 {
 public:
     explicit CSharpPrintUnit(const std::string& text);

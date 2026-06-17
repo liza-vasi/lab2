@@ -5,11 +5,11 @@
 #include "abstractfactory.h"
 #include "cppfactory.h"
 #include "csharp_factory.h"
+#include "java_factory.h"
 
 std::string generateProgram(AbstractFactory& factory) {
     auto myClass = factory.createClassUnit("MyClass");
     auto method = factory.createMethodUnit("testFunc", "void", 0);
-    // ✅ Убираем \n!
     auto print = factory.createPrintUnit("Hello, world!");
     method->add(print, 0);
     myClass->add(method, 0);
@@ -20,13 +20,17 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    std::cout << "========== C++ ==========" << std::endl;
+    std::cout << "C++" << std::endl;
     CppFactory cppFactory;
     std::cout << generateProgram(cppFactory) << std::endl;
 
-    std::cout << "\n========== C# ==========" << std::endl;
+    std::cout << "\nC#" << std::endl;
     CSharpFactory csharpFactory;
     std::cout << generateProgram(csharpFactory) << std::endl;
+
+    std::cout << "\nJAVA" << std::endl;
+    JavaFactory javaFactory;
+    std::cout << generateProgram(javaFactory) << std::endl;
 
     return a.exec();
 }

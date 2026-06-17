@@ -10,7 +10,7 @@ public:
     explicit PrintOperatorUnit(const std::string& text);
     std::string compile(unsigned int level = 0) const override;
 
-protected:  // ← ИЗМЕНИЛИ с private на protected!
+protected:
     std::string m_text;
 };
 

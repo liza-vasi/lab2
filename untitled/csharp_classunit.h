@@ -1,11 +1,11 @@
 #ifndef CSHARP_CLASSUNIT_H
 #define CSHARP_CLASSUNIT_H
 
-#include "unit.h"  // ← НЕ classunit.h!
+#include "unit.h"
 #include <vector>
 #include <string>
 
-class CSharpClassUnit : public Unit  // ← наследуемся от Unit!
+class CSharpClassUnit : public Unit
 {
 public:
     enum AccessModifier {

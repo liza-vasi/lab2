@@ -46,9 +46,7 @@ std::string CSharpClassUnit::compile(unsigned int level) const
     for (size_t i = 0; i < 4; ++i) {
         if (m_fields[i].empty()) continue;
 
-        // ✅ Убираем лишний перевод строки
         result += generateShift(level + 1) + ACCESS_MODIFIERS[i];
-        // ✅ Добавляем пробел, а не перевод строки!
         result += " ";
         for (const auto& f : m_fields[i]) {
             result += f->compile(level + 2);

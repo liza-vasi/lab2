@@ -1,26 +1,26 @@
-#ifndef CSHARP_FACTORY_H
-#define CSHARP_FACTORY_H
+#ifndef JAVA_FACTORY_H
+#define JAVA_FACTORY_H
 
 #include "abstractfactory.h"
-#include "csharp_classunit.h"
-#include "csharp_methodunit.h"
-#include "csharp_printunit.h"
+#include "java_classunit.h"
+#include "java_methodunit.h"
+#include "java_printunit.h"
 
-class CSharpFactory : public AbstractFactory
+class JavaFactory : public AbstractFactory
 {
 public:
     std::shared_ptr<Unit> createClassUnit(const std::string& name) override {
-        auto unit = std::make_shared<CSharpClassUnit>(name);
+        auto unit = std::make_shared<JavaClassUnit>(name);
         unit->setClassModifier("public");
         return unit;
     }
 
     std::shared_ptr<Unit> createMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags) override {
-        return std::make_shared<CSharpMethodUnit>(name, returnType, flags);
+        return std::make_shared<JavaMethodUnit>(name, returnType, flags);
     }
 
     std::shared_ptr<Unit> createPrintUnit(const std::string& text) override {
-        return std::make_shared<CSharpPrintUnit>(text);
+        return std::make_shared<JavaPrintUnit>(text);
     }
 };
 

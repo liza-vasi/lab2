@@ -19,7 +19,7 @@ public:
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
 
-protected:  // ← ИЗМЕНИ private НА protected!
+protected:
     std::string m_name;
     using Fields = std::vector<std::shared_ptr<Unit>>;
     std::vector<Fields> m_fields;
