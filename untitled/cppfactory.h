@@ -6,7 +6,6 @@
 #include "methodunit.h"
 #include "printoperatorunit.h"
 
-// ✅ Реализует интерфейс AbstractFactory
 class CppFactory : public AbstractFactory
 {
 public:

@@ -11,6 +11,9 @@ SOURCES += \
         csharp_classunit.cpp \
         csharp_methodunit.cpp \
         csharp_printunit.cpp \
+        java_classunit.cpp \
+        java_methodunit.cpp \
+        java_printunit.cpp \
         main.cpp \
         methodunit.cpp \
         printoperatorunit.cpp \
@@ -29,6 +32,10 @@ HEADERS += \
     csharp_factory.h \
     csharp_methodunit.h \
     csharp_printunit.h \
+    java_classunit.h \
+    java_factory.h \
+    java_methodunit.h \
+    java_printunit.h \
     methodunit.h \
     printoperatorunit.h \
     unit.h
