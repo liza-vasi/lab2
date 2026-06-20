@@ -11,13 +11,17 @@ const std::vector<std::string> CSharpClassUnit::ACCESS_MODIFIERS = {
 };
 
 CSharpClassUnit::CSharpClassUnit(const std::string& name)
-    : m_name(name)
+    : AbstractClassUnit(name)
 {
     m_fields.resize(7);
 }
 
 void CSharpClassUnit::setClassModifier(const std::string& modifier) {
     m_classModifier = modifier;
+}
+
+void CSharpClassUnit::addInterface(const std::string& interfaceName) {
+    m_interfaces.push_back(interfaceName);
 }
 
 void CSharpClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags) {
@@ -41,6 +45,13 @@ std::string CSharpClassUnit::compile(unsigned int level) const {
     }
     result += "class " + m_name;
 
+    if (!m_interfaces.empty()) {
+        result += " : ";
+        for (size_t i = 0; i < m_interfaces.size(); ++i) {
+            if (i > 0) result += ", ";
+            result += m_interfaces[i];
+        }
+    }
     result += "\n" + generateShift(level) + "{\n";
 
     for (size_t i = 0; i < 7; ++i) {

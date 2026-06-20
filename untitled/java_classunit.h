@@ -1,12 +1,11 @@
 #ifndef JAVA_CLASSUNIT_H
 #define JAVA_CLASSUNIT_H
 
-#include "unit.h"
+#include "abstract_class_unit.h"
 #include <vector>
 #include <string>
 
-class JavaClassUnit : public Unit
-{
+class JavaClassUnit : public AbstractClassUnit {
 public:
     enum AccessModifier {
         PUBLIC,
@@ -19,14 +18,12 @@ public:
 
     void add(const std::shared_ptr<Unit>& unit, Flags flags) override;
     std::string compile(unsigned int level = 0) const override;
-    void setClassModifier(const std::string& modifier);
+    void setClassModifier(const std::string& modifier) override;
+    void addInterface(const std::string& interfaceName) override;
 
 private:
-    std::string m_name;
     std::string m_classModifier;
-    using Fields = std::vector<std::shared_ptr<Unit>>;
-    std::vector<Fields> m_fields;
-
+    std::vector<std::string> m_interfaces;
     static const std::vector<std::string> ACCESS_MODIFIERS;
 };
 

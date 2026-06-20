@@ -8,13 +8,17 @@ const std::vector<std::string> JavaClassUnit::ACCESS_MODIFIERS = {
 };
 
 JavaClassUnit::JavaClassUnit(const std::string& name)
-    : m_name(name)
+    : AbstractClassUnit(name)
 {
     m_fields.resize(4);
 }
 
 void JavaClassUnit::setClassModifier(const std::string& modifier) {
     m_classModifier = modifier;
+}
+
+void JavaClassUnit::addInterface(const std::string& interfaceName) {
+    m_interfaces.push_back(interfaceName);
 }
 
 void JavaClassUnit::add(const std::shared_ptr<Unit>& unit, Flags flags) {
@@ -33,6 +37,13 @@ std::string JavaClassUnit::compile(unsigned int level) const {
     }
     result += "class " + m_name;
 
+    if (!m_interfaces.empty()) {
+        result += " implements ";
+        for (size_t i = 0; i < m_interfaces.size(); ++i) {
+            if (i > 0) result += ", ";
+            result += m_interfaces[i];
+        }
+    }
     result += " {\n";
 
     for (size_t i = 0; i < 4; ++i) {

@@ -1,12 +1,11 @@
 #ifndef METHODUNIT_H
 #define METHODUNIT_H
 
-#include "unit.h"
+#include "abstract_method_unit.h"
 #include <vector>
 #include <string>
 
-class MethodUnit : public Unit
-{
+class MethodUnit : public AbstractMethodUnit {
 public:
     enum Modifier {
         STATIC = 1,
@@ -18,12 +17,6 @@ public:
 
     void add(const std::shared_ptr<Unit>& unit, Flags = 0) override;
     std::string compile(unsigned int level = 0) const override;
-
-private:
-    std::string m_name;
-    std::string m_returnType;
-    Flags m_flags;
-    std::vector<std::shared_ptr<Unit>> m_body;
 };
 
 #endif

@@ -1,17 +1,15 @@
 #include "csharp_methodunit.h"
 
 CSharpMethodUnit::CSharpMethodUnit(const std::string& name, const std::string& returnType, Unit::Flags flags)
-    : m_name(name), m_returnType(returnType), m_flags(flags)
+    : AbstractMethodUnit(name, returnType, flags)
 {
 }
 
-void CSharpMethodUnit::add(const std::shared_ptr<Unit>& unit, Unit::Flags)
-{
+void CSharpMethodUnit::add(const std::shared_ptr<Unit>& unit, Unit::Flags) {
     m_body.push_back(unit);
 }
 
-std::string CSharpMethodUnit::compile(unsigned int level) const
-{
+std::string CSharpMethodUnit::compile(unsigned int level) const {
     std::string result = generateShift(level);
 
     if (m_flags & PUBLIC) result += "public ";
