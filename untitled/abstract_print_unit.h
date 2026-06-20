@@ -1,17 +1,17 @@
 #ifndef ABSTRACT_PRINT_UNIT_H
 #define ABSTRACT_PRINT_UNIT_H
 
-#include "abstractunit.h"
+#include "unit.h"
 #include <string>
 
-/*
- * Абстрактный оператор печати.
- * Наследники определяют свой синтаксис вывода.
- */
-class AbstractPrintUnit : public AbstractUnit {
+class AbstractPrintUnit : public Unit {
 public:
-    explicit AbstractPrintUnit(const std::string& text);
-    virtual std::string compile(unsigned int level = 0) const = 0;
+    explicit AbstractPrintUnit(const std::string& text) : m_text(text) {}
+
+    virtual ~AbstractPrintUnit() = default;
+
+    virtual std::string compile(unsigned int level = 0) const override = 0;
+
 protected:
     std::string m_text;
 };

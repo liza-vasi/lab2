@@ -1,13 +1,13 @@
 #ifndef ABSTRACT_CLASS_UNIT_H
 #define ABSTRACT_CLASS_UNIT_H
 
-#include "abstractunit.h"
+#include "unit.h"
 #include <vector>
 #include <string>
 
 /*Абстрактный класс для представления класса
  * Не содержит модификаторов — наследники определяют свои*/
-class AbstractClassUnit : public AbstractUnit {
+class AbstractClassUnit : public Unit {
 public:
     explicit AbstractClassUnit(const std::string& name) : m_name(name) {}
 
@@ -15,7 +15,7 @@ public:
 
     /* Добавляет метод в класс.
      * flags интерпретируются наследниками по-своему.*/
-    virtual void add(const std::shared_ptr<AbstractUnit>& unit, Flags flags) override = 0;
+    virtual void add(const std::shared_ptr<Unit>& unit, Flags flags) override = 0;
 
 
      // Генерирует код класса.
@@ -34,7 +34,7 @@ public:
 
 protected:
     std::string m_name;                            // имя класса
-    using Fields = std::vector<std::shared_ptr<AbstractUnit>>;
+    using Fields = std::vector<std::shared_ptr<Unit>>;
     std::vector<Fields> m_fields;                  // методы по секциям доступа
 };
 

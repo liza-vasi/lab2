@@ -1,17 +1,14 @@
 #ifndef PRINTOPERATORUNIT_H
 #define PRINTOPERATORUNIT_H
 
-#include "unit.h"
+#include "abstract_print_unit.h"
 #include <string>
 
-class PrintOperatorUnit : public Unit
-{
+class PrintOperatorUnit : public AbstractPrintUnit {
 public:
     explicit PrintOperatorUnit(const std::string& text);
-    std::string compile(unsigned int level = 0) const override;
 
-private:
-    std::string m_text;
+    std::string compile(unsigned int level = 0) const override;
 };
 
 #endif
