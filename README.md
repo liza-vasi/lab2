@@ -41,8 +41,7 @@
 |C#	|CSharpClassUnit	|CSharpMethodUnit	|CSharpPrintUnit	|CSharpFactory|
 |Java	|JavaClassUnit	|JavaMethodUnit	|JavaPrintUnit	|JavaFactory|
 
-Все языковые классы наследуются напрямую от Unit, что обеспечивает независимость реализаций и отсутствие конфликтов.
-
+Все языковые классы наследуются от абстрактных классов (AbstractClassUnit, AbstractMethodUnit, AbstractPrintUnit), которые, в свою очередь, наследуются от Unit. Это обеспечивает единый интерфейс и независимость реализаций.
 
 UML: https://drive.google.com/file/d/1KcCk1fe5QfR2mv8qyn6sTRrBSvv_6-Fn/view?usp=sharing
 
@@ -56,29 +55,25 @@ UML: https://drive.google.com/file/d/1KcCk1fe5QfR2mv8qyn6sTRrBSvv_6-Fn/view?usp=
 int main() {
     CppFactory factory;
 
-    // Создаём класс с именем MyClass
     auto myClass = factory.createClassUnit("MyClass");
 
-    // Создаём методы с разными модификаторами
     auto method1 = factory.createMethodUnit("test1", "void", 0);
     auto method2 = factory.createMethodUnit("test2", "void", MethodUnit::STATIC);
+    auto method3 = factory.createMethodUnit("test3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST);
 
-    // Создаём метод с оператором печати
     auto methodPrint = factory.createMethodUnit("testPrint", "void", 0);
     auto print = factory.createPrintUnit("Hello, World!");
     methodPrint->add(print, 0);
 
-    // Добавляем методы в класс с разными модификаторами доступа
     myClass->add(method1, ClassUnit::PUBLIC);
     myClass->add(method2, ClassUnit::PRIVATE);
     myClass->add(method3, ClassUnit::PUBLIC);
     myClass->add(methodPrint, ClassUnit::PROTECTED);
 
-    // Генерируем и выводим код
     std::cout << myClass->compile();
-
     return 0;
 }
+
 ```
 **Результат выполнения:**
 
